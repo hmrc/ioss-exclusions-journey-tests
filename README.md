@@ -13,7 +13,7 @@ Start Mongo Docker container as follows:
 docker run --rm -d -p 27017:27017 --name mongo percona/percona-server-mongodb:5.0
 ```
 
-Start `<digital service name>` services as follows:
+Start `ioss-exclusions-frontend` services as follows:
 
 ```bash
 sm2 --start IMPORT_ONE_STOP_SHOP_ALL
