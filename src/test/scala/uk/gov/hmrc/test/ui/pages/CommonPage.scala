@@ -18,7 +18,6 @@ package uk.gov.hmrc.test.ui.pages
 
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 
-
 object CommonPage extends BasePage {
 
   val exclusionsUrl: String = TestConfiguration.url("ioss-exclusions-frontend")

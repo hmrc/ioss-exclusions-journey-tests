@@ -23,17 +23,15 @@ import uk.gov.hmrc.test.ui.conf.TestConfiguration
 object AuthPage extends BasePage {
 
   def loginUsingAuthorityWizard(
-                         vrn: String,
-                         iossNumber: String
-                       ): Unit = {
-
+    vrn: String,
+    iossNumber: String
+  ): Unit = {
 
     val stubUrl: String = TestConfiguration.url("auth-login-stub") + "/gg-sign-in"
     driver.getCurrentUrl should startWith(stubUrl)
 
     driver.findElement(By.id("redirectionUrl")).clear()
     driver.findElement(By.id("redirectionUrl")).sendKeys(TestConfiguration.url("ioss-exclusions-frontend"))
-
 
     val selectAffinityGroup = new Select(driver.findElement(By.id("affinityGroupSelect")))
     selectAffinityGroup.selectByValue("Organisation")
@@ -54,6 +52,5 @@ object AuthPage extends BasePage {
       .sendKeys(iossNumber)
     driver.findElement(By.cssSelector("Input[value='Submit']")).click()
   }
-
 
 }
