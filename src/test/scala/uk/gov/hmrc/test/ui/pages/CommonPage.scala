@@ -16,20 +16,17 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.By
+import uk.gov.hmrc.test.ui.conf.TestConfiguration
 
-object CostOfGoods extends BasePage {
 
-  val costOfGoodsInput = "costOfGoods"
+object CommonPage extends BasePage {
 
-  def provideCostOfGoodsAmount(amount: String): this.type = {
-    driver.findElement(By.id(costOfGoodsInput)).clear()
-    driver.findElement(By.id(costOfGoodsInput)).sendKeys(amount)
-    this
-  }
+  val exclusionsUrl: String = TestConfiguration.url("ioss-exclusions-frontend")
 
-  def submitVATInformation: CheckYourVATResult.type = {
-    submitPage()
-    CheckYourVATResult
-  }
+  def goToExclusionsJourney(): Unit =
+    driver.navigate().to(exclusionsUrl)
+
+  def checkJourneyUrl(): Unit =
+    driver.getCurrentUrl should startWith(exclusionsUrl)
+
 }

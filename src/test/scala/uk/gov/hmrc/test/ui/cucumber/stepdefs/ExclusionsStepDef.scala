@@ -14,17 +14,24 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.test.ui.cucumber.runner
+package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
-import io.cucumber.junit.Cucumber
-import io.cucumber.junit.CucumberOptions
-import org.junit.runner.RunWith
+import uk.gov.hmrc.test.ui.pages.{AuthPage, CommonPage}
 
-@RunWith(classOf[Cucumber])
-@CucumberOptions(
-  features = Array("src/test/resources/features"),
-  glue = Array("uk.gov.hmrc.test.ui.cucumber.stepdefs"),
-  plugin = Array("pretty", "html:target/cucumber", "json:target/cucumber.json", "junit:target/test-reports/Runner.xml"),
-  tags = "@Exclusions"
-)
-class Runner {}
+class ExclusionsStepDef extends BaseStepDef {
+
+  Given("the user accesses the IOSS Exclusions service") { () =>
+    CommonPage.goToExclusionsJourney()
+  }
+
+  Given(
+    "^the user signs in as an Organisation with VRN (.*) and IOSS Number (.*)$"
+  ) { (vrn: String, iossNumber: String) =>
+    AuthPage.loginUsingAuthorityWizard(vrn, iossNumber)
+  }
+
+  Given("the user is at the beginning of the signed in IOSS Exclusions journey") { () =>
+    CommonPage.checkJourneyUrl()
+  }
+
+}
