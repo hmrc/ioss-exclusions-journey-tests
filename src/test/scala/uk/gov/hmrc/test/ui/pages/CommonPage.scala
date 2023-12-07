@@ -43,9 +43,7 @@ object CommonPage extends BasePage {
   }
 
   def clickContinue(): Unit =
-//    Awaiting IDs being added to buttons
-//    driver.findElement(By.id("continue")).click()
-    driver.findElement(By.className("govuk-button")).click()
+    driver.findElement(By.id("continue")).click()
 
   def selectValueAutocomplete(data: String): Unit = {
     waitForElement(By.id("value"))
