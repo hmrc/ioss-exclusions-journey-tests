@@ -18,6 +18,8 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import uk.gov.hmrc.test.ui.pages.{AuthPage, CommonPage}
 
+import java.time.LocalDate
+
 class ExclusionsStepDef extends BaseStepDef {
 
   Given("the user accesses the IOSS Exclusions service") { () =>
@@ -30,8 +32,35 @@ class ExclusionsStepDef extends BaseStepDef {
     AuthPage.loginUsingAuthorityWizard(vrn, iossNumber)
   }
 
-  Given("the user is at the beginning of the signed in IOSS Exclusions journey") { () =>
-    CommonPage.checkJourneyUrl()
+  When("""^the user answers (yes|no) on the (.*) page$""") { (data: String, url: String) =>
+    CommonPage.checkUrl(url)
+    CommonPage.selectAnswer(data)
+  }
+
+  When("""^the user selects (.*) on the (.*) page$""") { (data: String, page: String) =>
+    CommonPage.checkUrl(page)
+    CommonPage.selectValueAutocomplete(data)
+  }
+
+  When("^the user enters today for (.*)$") { (url: String) =>
+    val date = LocalDate.now()
+    CommonPage.checkUrl(url)
+    CommonPage.enterDate(
+      date.getDayOfMonth.toString,
+      date.getMonthValue.toString,
+      date.getYear.toString
+    )
+    CommonPage.clickContinue()
+  }
+
+  When("""^the user adds (.*) on the (.*) page$""") { (data: String, url: String) =>
+    CommonPage.checkUrl(url)
+    CommonPage.enterData("value", data)
+    CommonPage.clickContinue()
+  }
+
+  Then("""^the user is on the (.*) page$""") { (url: String) =>
+    CommonPage.checkUrl(url)
   }
 
 }
