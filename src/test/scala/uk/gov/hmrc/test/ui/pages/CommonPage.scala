@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.test.ui.pages
 
-import org.openqa.selenium.By
+import org.openqa.selenium.{By, Keys}
 import org.openqa.selenium.support.ui.{ExpectedConditions, FluentWait}
 import uk.gov.hmrc.test.ui.conf.TestConfiguration
 
@@ -46,8 +46,10 @@ object CommonPage extends BasePage {
     driver.findElement(By.id("continue")).click()
 
   def selectValueAutocomplete(data: String): Unit = {
-    waitForElement(By.id("value"))
-    enterData("value", data)
+    val inputId = "value"
+    driver.findElement(By.id(inputId)).sendKeys(data)
+    waitForElement(By.id(inputId))
+    driver.findElement(By.cssSelector("li#value__option--0")).click()
     clickContinue()
   }
 
@@ -59,11 +61,30 @@ object CommonPage extends BasePage {
   def enterData(inputId: String, data: String): Unit =
     driver.findElement(By.id(inputId)).sendKeys(data)
 
+  def clearData: Unit =
+    driver.findElement(By.id("value")).clear()
+
+  def clearDropdown: Unit = {
+    val input = driver.findElement(By.id("value")).getAttribute("value")
+    if (input != null) {
+      for (n <- input)
+        driver.findElement(By.id("value")).sendKeys(Keys.BACK_SPACE)
+    }
+  }
+
   def enterDate(day: String, month: String, year: String): Unit = {
     driver.findElement(By.id("value.day")).sendKeys(day)
     driver.findElement(By.id("value.month")).sendKeys(month)
     driver.findElement(By.id("value.year")).sendKeys(year)
+  }
 
+  def selectLink(link: String): Unit =
+    driver.findElement(By.cssSelector(s"a[href*=$link]")).click()
+
+  def clearDate(): Unit = {
+    driver.findElement(By.id("value.day")).clear()
+    driver.findElement(By.id("value.month")).clear()
+    driver.findElement(By.id("value.year")).clear()
   }
 
 }
