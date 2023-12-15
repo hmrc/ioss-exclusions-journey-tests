@@ -40,8 +40,7 @@ Feature: Changing Answers Feature
     Then the user is on the check-your-answers page
     When the user selects the change link for eu-country
     Then the user reselects Finland on the eu-country page
-#    Awaiting dev work to redirect to tax number
-#    And the user adds FI12345678 on the tax-number page
+    And the user adds FI12345678 on the tax-number page
     Then the user is on the check-your-answers page
     Then the user presses the continue button
     And the user is on the successful page
