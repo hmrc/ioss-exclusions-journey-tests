@@ -16,6 +16,8 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
+import org.openqa.selenium.By
+import uk.gov.hmrc.test.ui.pages.CommonPage.waitForElement
 import uk.gov.hmrc.test.ui.pages.{AuthPage, CommonPage}
 
 import java.time.LocalDate
@@ -37,14 +39,26 @@ class ExclusionsStepDef extends BaseStepDef {
     CommonPage.selectAnswer(data)
   }
 
-  When("""^the user selects (.*) on the (.*) page$""") { (data: String, page: String) =>
+  When("""^the user (selects|reselects) (.*) on the (.*) page$""") { (select: String, data: String, page: String) =>
     CommonPage.checkUrl(page)
+    if (select == "reselects") {
+      CommonPage.clearDropdown
+    }
     CommonPage.selectValueAutocomplete(data)
   }
 
-  When("^the user enters today for (.*)$") { (url: String) =>
-    val date = LocalDate.now()
+  When("^the user (enters|amends to) (today|tomorrow) for (.*)$") { (mode: String, dateEntered: String, url: String) =>
+    val date = {
+      if (dateEntered == "today") {
+        LocalDate.now()
+      } else {
+        LocalDate.now().plusDays(1)
+      }
+    }
     CommonPage.checkUrl(url)
+    if (mode == "amends to") {
+      CommonPage.clearDate()
+    }
     CommonPage.enterDate(
       date.getDayOfMonth.toString,
       date.getMonthValue.toString,
@@ -53,14 +67,25 @@ class ExclusionsStepDef extends BaseStepDef {
     CommonPage.clickContinue()
   }
 
-  When("""^the user adds (.*) on the (.*) page$""") { (data: String, url: String) =>
+  When("""^the user (adds|amends to) (.*) on the (.*) page$""") { (mode: String, data: String, url: String) =>
     CommonPage.checkUrl(url)
+    if (mode == "amends to") {
+      CommonPage.clearData
+    }
     CommonPage.enterData("value", data)
     CommonPage.clickContinue()
   }
 
   Then("""^the user is on the (.*) page$""") { (url: String) =>
     CommonPage.checkUrl(url)
+  }
+
+  Then("""^the user selects the change link for (.*)$""") { (link: String) =>
+    CommonPage.selectLink(s"$link\\?waypoints\\=check-your-answers")
+  }
+
+  Then("""^the user presses the continue button$""") { () =>
+    CommonPage.clickContinue()
   }
 
 }
