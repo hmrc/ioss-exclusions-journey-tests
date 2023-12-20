@@ -88,4 +88,8 @@ class ExclusionsStepDef extends BaseStepDef {
     CommonPage.clickContinue()
   }
 
+  Then("""^the user clicks on the sign out link$""") { () =>
+    CommonPage.selectLink("\\/account\\/sign-out-survey")
+  }
+
 }
