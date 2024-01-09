@@ -24,14 +24,19 @@ object AuthPage extends BasePage {
 
   def loginUsingAuthorityWizard(
     vrn: String,
-    iossNumber: String
+    iossNumber: String,
+    service: String
   ): Unit = {
 
     val stubUrl: String = TestConfiguration.url("auth-login-stub") + "/gg-sign-in"
     driver.getCurrentUrl should startWith(stubUrl)
 
     driver.findElement(By.id("redirectionUrl")).clear()
-    driver.findElement(By.id("redirectionUrl")).sendKeys(TestConfiguration.url("ioss-exclusions-frontend"))
+    if (service == "returns") {
+      driver.findElement(By.id("redirectionUrl")).sendKeys(TestConfiguration.url("ioss-returns-frontend"))
+    } else {
+      driver.findElement(By.id("redirectionUrl")).sendKeys(TestConfiguration.url("ioss-exclusions-frontend"))
+    }
 
     val selectAffinityGroup = new Select(driver.findElement(By.id("affinityGroupSelect")))
     selectAffinityGroup.selectByValue("Organisation")

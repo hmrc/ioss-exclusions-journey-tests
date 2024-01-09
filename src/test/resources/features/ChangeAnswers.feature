@@ -4,7 +4,7 @@ Feature: Changing Answers Feature
 
   Scenario: Changing the move date for moving to a different country exclusions journey
     Given the user accesses the IOSS Exclusions service
-    When the user signs in as an Organisation with VRN 100000001 and IOSS Number IM9001234567
+    When the user signs into exclusions as an Organisation with VRN 100000001 and IOSS Number IM9001234567
     Then the user answers yes on the move-country page
     And the user selects Austria on the eu-country page
     And the user enters today for move-date
@@ -18,7 +18,7 @@ Feature: Changing Answers Feature
 
   Scenario: Changing the tax number for moving to a different country exclusions journey
     Given the user accesses the IOSS Exclusions service
-    When the user signs in as an Organisation with VRN 100000001 and IOSS Number IM9001234567
+    When the user signs into exclusions as an Organisation with VRN 100000001 and IOSS Number IM9001234567
     Then the user answers yes on the move-country page
     And the user selects Slovakia on the eu-country page
     And the user enters today for move-date
@@ -32,7 +32,7 @@ Feature: Changing Answers Feature
 
   Scenario: Changing the country for moving to a different country exclusions journey
     Given the user accesses the IOSS Exclusions service
-    When the user signs in as an Organisation with VRN 100000001 and IOSS Number IM9001234567
+    When the user signs into exclusions as an Organisation with VRN 100000001 and IOSS Number IM9001234567
     Then the user answers yes on the move-country page
     And the user selects Poland on the eu-country page
     And the user enters today for move-date

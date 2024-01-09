@@ -16,8 +16,8 @@
 
 package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
+import org.junit.Assert
 import org.openqa.selenium.By
-import uk.gov.hmrc.test.ui.pages.CommonPage.waitForElement
 import uk.gov.hmrc.test.ui.pages.{AuthPage, CommonPage}
 
 import java.time.LocalDate
@@ -28,10 +28,14 @@ class ExclusionsStepDef extends BaseStepDef {
     CommonPage.goToExclusionsJourney()
   }
 
+  Given("the user accesses the IOSS Returns service") { () =>
+    CommonPage.goToReturnsDashboard()
+  }
+
   Given(
-    "^the user signs in as an Organisation with VRN (.*) and IOSS Number (.*)$"
-  ) { (vrn: String, iossNumber: String) =>
-    AuthPage.loginUsingAuthorityWizard(vrn, iossNumber)
+    "^the user signs into (exclusions|returns) as an Organisation with VRN (.*) and IOSS Number (.*)$"
+  ) { (service: String, vrn: String, iossNumber: String) =>
+    AuthPage.loginUsingAuthorityWizard(vrn, iossNumber, service)
   }
 
   When("""^the user answers (yes|no) on the (.*) page$""") { (data: String, url: String) =>
@@ -90,6 +94,19 @@ class ExclusionsStepDef extends BaseStepDef {
 
   Then("""^the user clicks on the sign out link$""") { () =>
     CommonPage.selectLink("\\/account\\/sign-out-survey")
+  }
+
+  Then("""^the user clicks on the Cancel your request to leave link$""") { () =>
+    driver.findElement(By.id("cancel-your-request-to-leave")).click()
+  }
+
+  Then("""^the link to cancel the self exclusion is not displayed on the dashboard$""") { () =>
+    val htmlBody = driver.findElement(By.tagName("body")).getText
+    Assert.assertFalse(htmlBody.contains("Cancel your request to leave"))
+  }
+
+  When("""^the user manually navigates to the cancel exclusion link$""") { () =>
+    CommonPage.goToCancelExclusion()
   }
 
 }

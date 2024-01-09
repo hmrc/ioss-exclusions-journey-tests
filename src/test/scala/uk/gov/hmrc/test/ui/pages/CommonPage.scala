@@ -23,9 +23,13 @@ import uk.gov.hmrc.test.ui.conf.TestConfiguration
 object CommonPage extends BasePage {
 
   val exclusionsUrl: String = TestConfiguration.url("ioss-exclusions-frontend")
+  val returnsUrl: String    = TestConfiguration.url("ioss-returns-frontend")
 
   def goToExclusionsJourney(): Unit =
     driver.navigate().to(exclusionsUrl)
+
+  def goToReturnsDashboard(): Unit =
+    driver.navigate().to(returnsUrl)
 
   def checkJourneyUrl(): Unit =
     driver.getCurrentUrl should startWith(s"$exclusionsUrl/move-country")
@@ -86,5 +90,8 @@ object CommonPage extends BasePage {
     driver.findElement(By.id("value.month")).clear()
     driver.findElement(By.id("value.year")).clear()
   }
+
+  def goToCancelExclusion(): Unit =
+    driver.navigate().to(s"$exclusionsUrl/cancel-leave-scheme")
 
 }

@@ -4,7 +4,7 @@ Feature: Exclusions Feature
 
   Scenario: Moving to a different country exclusions journey
     Given the user accesses the IOSS Exclusions service
-    When the user signs in as an Organisation with VRN 100000001 and IOSS Number IM9001234567
+    When the user signs into exclusions as an Organisation with VRN 100000001 and IOSS Number IM9001234567
     Then the user answers yes on the move-country page
     And the user selects Hungary on the eu-country page
     And the user enters today for move-date
@@ -16,7 +16,7 @@ Feature: Exclusions Feature
 
   Scenario: Stopped selling eligible goods to EU/NI exclusions journey
     Given the user accesses the IOSS Exclusions service
-    When the user signs in as an Organisation with VRN 100000001 and IOSS Number IM9001234567
+    When the user signs into exclusions as an Organisation with VRN 100000001 and IOSS Number IM9001234567
     Then the user answers no on the move-country page
     And the user answers yes on the stop-selling-goods page
     And the user enters today for stopped-selling-goods-date
@@ -25,7 +25,7 @@ Feature: Exclusions Feature
 
   Scenario: Voluntary exclusions journey
     Given the user accesses the IOSS Exclusions service
-    When the user signs in as an Organisation with VRN 100000001 and IOSS Number IM9001234567
+    When the user signs into exclusions as an Organisation with VRN 100000001 and IOSS Number IM9001234567
     Then the user answers no on the move-country page
     And the user answers no on the stop-selling-goods page
     And the user answers yes on the leave-scheme page
