@@ -30,5 +30,11 @@ Feature: Kickouts Feature
     And the user enters today for stopped-using-service-date
     Then the user is on the submission-failure page
 
+  Scenario: A trader is unable to access the self exclude journey when already excluded
+    Given the user accesses the IOSS Returns service
+    When the user signs into returns as an Organisation with VRN 100000001 and IOSS Number IM9009999995
+    Then the user manually navigates to the self exclude journey
+#    should see an error page
+
 
 

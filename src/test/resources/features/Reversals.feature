@@ -42,3 +42,5 @@ Feature: Reversals Feature
     When the user manually navigates to the cancel exclusion link
 #    Should give an error
 
+#  Trader should be able to access self exclude journey following successful reversal
+

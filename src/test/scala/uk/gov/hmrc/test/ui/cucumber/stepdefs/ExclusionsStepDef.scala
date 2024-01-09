@@ -118,4 +118,8 @@ class ExclusionsStepDef extends BaseStepDef {
     CommonPage.goToCancelExclusion()
   }
 
+  When("""^the user manually navigates to the self exclude journey$""") { () =>
+    CommonPage.goToExclusionsJourney()
+  }
+
 }
