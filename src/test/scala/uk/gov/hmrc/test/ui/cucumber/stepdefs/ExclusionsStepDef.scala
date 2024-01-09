@@ -100,9 +100,18 @@ class ExclusionsStepDef extends BaseStepDef {
     driver.findElement(By.id("cancel-your-request-to-leave")).click()
   }
 
+  Then("""^the user clicks on the Leave this service link$""") { () =>
+    driver.findElement(By.id("leave-scheme")).click()
+  }
+
   Then("""^the link to cancel the self exclusion is not displayed on the dashboard$""") { () =>
     val htmlBody = driver.findElement(By.tagName("body")).getText
     Assert.assertFalse(htmlBody.contains("Cancel your request to leave"))
+  }
+
+  Then("""^the link to Leave this service is not displayed on the dashboard$""") { () =>
+    val htmlBody = driver.findElement(By.tagName("body")).getText
+    Assert.assertFalse(htmlBody.contains("Leave this service"))
   }
 
   When("""^the user manually navigates to the cancel exclusion link$""") { () =>
