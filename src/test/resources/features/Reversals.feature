@@ -32,7 +32,7 @@ Feature: Reversals Feature
     And the link to Leave this service is not displayed on the dashboard
     Then the link to cancel the self exclusion is not displayed on the dashboard
     When the user manually navigates to the cancel exclusion link
-#    Should give an error
+    Then the user is on the cancel-leave-scheme-error page
 
   Scenario: Trader cannot reverse an exclusion that is not one of the self exclude reasons
     Given the user accesses the IOSS Returns service
@@ -40,7 +40,7 @@ Feature: Reversals Feature
     And the link to Leave this service is not displayed on the dashboard
     Then the link to cancel the self exclusion is not displayed on the dashboard
     When the user manually navigates to the cancel exclusion link
-#    Should give an error
+    Then the user is on the cancel-leave-scheme-error page
 
   Scenario: Trader who has reversed a self-exclusion can do another self-exclusion
     Given the user accesses the IOSS Returns service

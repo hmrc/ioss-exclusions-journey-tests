@@ -34,7 +34,7 @@ Feature: Kickouts Feature
     Given the user accesses the IOSS Returns service
     When the user signs into returns as an Organisation with VRN 100000001 and IOSS Number IM9009999995
     Then the user manually navigates to the self exclude journey
-#    should see an error page
+    And the user is on the already-left-scheme-error page
 
 
 
