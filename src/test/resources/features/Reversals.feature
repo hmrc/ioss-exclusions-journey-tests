@@ -1,4 +1,4 @@
-@Exclusions @Accessibility
+@Exclusions @Accessibility @wip
 
 Feature: Reversals Feature
 
@@ -42,17 +42,17 @@ Feature: Reversals Feature
     When the user manually navigates to the cancel exclusion link
     Then the user is on the cancel-leave-scheme-error page
 
-  Scenario: Trader who has reversed a self-exclusion can do another self-exclusion
-    Given the user accesses the IOSS Returns service
-    When the user signs into returns as an Organisation with VRN 100000001 and IOSS Number IM9009999992
-#  Currently no leave this service link showing
-    And the user clicks on the Leave this service link
-    Then the user answers no on the move-country page
-    And the user answers no on the stop-selling-goods page
-    And the user answers yes on the leave-scheme page
-    And the user enters today for stopped-using-service-date
-    Then the user is on the successful page
-    And the user clicks on the sign out link
+#    This will not work until VEIOSS-472 is implemented
+#  Scenario: Trader who has reversed a self-exclusion can do another self-exclusion
+#    Given the user accesses the IOSS Returns service
+#    When the user signs into returns as an Organisation with VRN 100000001 and IOSS Number IM9009999992
+#    And the user clicks on the Leave this service link
+#    Then the user answers no on the move-country page
+#    And the user answers no on the stop-selling-goods page
+#    And the user answers yes on the leave-scheme page
+#    And the user enters today for stopped-using-service-date
+#    Then the user is on the successful page
+#    And the user clicks on the sign out link
 
   Scenario: A trader who has self excluded, reversed and then self-excluded again can reverse
     Given the user accesses the IOSS Returns service
