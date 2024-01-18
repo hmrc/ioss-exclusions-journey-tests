@@ -15,6 +15,7 @@ Feature: Changing Answers Feature
     Then the user is on the check-your-answers page
     Then the user presses the continue button
     And the user is on the successful page
+    And the user clicks on the sign out link
 
   Scenario: Changing the tax number for moving to a different country exclusions journey
     Given the user accesses the IOSS Exclusions service
@@ -29,6 +30,7 @@ Feature: Changing Answers Feature
     Then the user is on the check-your-answers page
     Then the user presses the continue button
     And the user is on the successful page
+    And the user clicks on the sign out link
 
   Scenario: Changing the country for moving to a different country exclusions journey
     Given the user accesses the IOSS Exclusions service
@@ -44,4 +46,5 @@ Feature: Changing Answers Feature
     Then the user is on the check-your-answers page
     Then the user presses the continue button
     And the user is on the successful page
+    And the user clicks on the sign out link
 
