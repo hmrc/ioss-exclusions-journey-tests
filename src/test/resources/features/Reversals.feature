@@ -1,4 +1,4 @@
-@Exclusions @Accessibility @wip
+@Exclusions @Accessibility
 
 Feature: Reversals Feature
 
@@ -9,6 +9,7 @@ Feature: Reversals Feature
     Then the user clicks on the Cancel your request to leave link
     When the user answers yes on the cancel-leave-scheme page
     Then the user is on the cancel-leave-scheme-complete page
+    And the user clicks on the sign out link
 
   Scenario: Reversing a self exclusion for trader no longer selling eligible goods
     Given the user accesses the IOSS Returns service
@@ -17,6 +18,7 @@ Feature: Reversals Feature
     Then the user clicks on the Cancel your request to leave link
     When the user answers yes on the cancel-leave-scheme page
     Then the user is on the cancel-leave-scheme-complete page
+    And the user clicks on the sign out link
 
   Scenario: Reversing a self exclusion for trader leaving scheme voluntarily
     Given the user accesses the IOSS Returns service
@@ -25,6 +27,7 @@ Feature: Reversals Feature
     Then the user clicks on the Cancel your request to leave link
     When the user answers yes on the cancel-leave-scheme page
     Then the user is on the cancel-leave-scheme-complete page
+    And the user clicks on the sign out link
 
   Scenario: Trader cannot reverse a self exclusion if the effective exclusion date is in the past
     Given the user accesses the IOSS Returns service
@@ -33,6 +36,7 @@ Feature: Reversals Feature
     Then the link to cancel the self exclusion is not displayed on the dashboard
     When the user manually navigates to the cancel exclusion link
     Then the user is on the cancel-leave-scheme-error page
+    And the user clicks on the sign out link
 
   Scenario: Trader cannot reverse an exclusion that is not one of the self exclude reasons
     Given the user accesses the IOSS Returns service
@@ -41,6 +45,7 @@ Feature: Reversals Feature
     Then the link to cancel the self exclusion is not displayed on the dashboard
     When the user manually navigates to the cancel exclusion link
     Then the user is on the cancel-leave-scheme-error page
+    And the user clicks on the sign out link
 
 #    This will not work until VEIOSS-472 is implemented
 #  Scenario: Trader who has reversed a self-exclusion can do another self-exclusion
@@ -61,4 +66,5 @@ Feature: Reversals Feature
     Then the user clicks on the Cancel your request to leave link
     When the user answers yes on the cancel-leave-scheme page
     Then the user is on the cancel-leave-scheme-complete page
+    And the user clicks on the sign out link
 
