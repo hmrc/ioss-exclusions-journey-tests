@@ -9,7 +9,7 @@ Feature: Exclusions Feature
     Then the user answers yes on the move-country page
     And the user selects Hungary on the eu-country page
     And the user enters today for move-date
-    And the user adds HU12345678 on the tax-number page
+    And the user adds HU12345678 on the eu-vat-number page
     Then the user is on the check-your-answers page
     Then the user presses the continue button
     And the user is on the successful page
