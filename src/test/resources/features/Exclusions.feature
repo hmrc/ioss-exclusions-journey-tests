@@ -1,4 +1,4 @@
-@Exclusions @Accessibility @ZAP @wip
+@Exclusions @Accessibility @ZAP
 
 Feature: Exclusions Feature
 
