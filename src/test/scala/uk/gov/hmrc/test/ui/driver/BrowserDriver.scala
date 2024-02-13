@@ -21,6 +21,6 @@ import uk.gov.hmrc.selenium.webdriver.Driver
 
 trait BrowserDriver {
 
-  implicit var driver: RemoteWebDriver = Driver.instance
+  implicit def driver: RemoteWebDriver = Driver.instance
 
 }
