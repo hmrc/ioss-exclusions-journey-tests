@@ -46,7 +46,7 @@ class ExclusionsStepDef extends BaseStepDef {
   When("""^the user (selects|reselects) (.*) on the (.*) page$""") { (select: String, data: String, page: String) =>
     CommonPage.checkUrl(page)
     if (select == "reselects") {
-      CommonPage.clearDropdown
+      CommonPage.clearDropdown()
     }
     CommonPage.selectValueAutocomplete(data)
   }
@@ -74,7 +74,7 @@ class ExclusionsStepDef extends BaseStepDef {
   When("""^the user (adds|amends to) (.*) on the (.*) page$""") { (mode: String, data: String, url: String) =>
     CommonPage.checkUrl(url)
     if (mode == "amends to") {
-      CommonPage.clearData
+      CommonPage.clearData()
     }
     CommonPage.enterData("value", data)
     CommonPage.clickContinue()

@@ -65,10 +65,10 @@ object CommonPage extends BasePage {
   def enterData(inputId: String, data: String): Unit =
     driver.findElement(By.id(inputId)).sendKeys(data)
 
-  def clearData: Unit =
+  def clearData(): Unit =
     driver.findElement(By.id("value")).clear()
 
-  def clearDropdown: Unit = {
+  def clearDropdown(): Unit = {
     val input = driver.findElement(By.id("value")).getAttribute("value")
     if (input != null) {
       for (n <- input)
