@@ -58,4 +58,12 @@ Feature: Reversals Feature
     Then the user is on the successful page
     And the user clicks on the sign out link
 
+  Scenario: Failure from ETMP when reversing a self exclusion
+    Given the user accesses the IOSS Returns service
+    When the user signs into returns as an Organisation with VRN 100000001 and IOSS Number IM9009999966
+    And the link to Leave this service is not displayed on the dashboard
+    Then the user clicks on the Cancel your request to leave link
+    When the user answers yes on the cancel-leave-scheme page
+    Then the user is on the cancel-leave-scheme-submission-failure page
+
 
