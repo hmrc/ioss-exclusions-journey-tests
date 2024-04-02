@@ -48,14 +48,17 @@ object AuthPage extends BasePage {
     driver
       .findElement(By.id("input-0-0-value"))
       .sendKeys(vrn)
-    driver.findElement(By.id("enrolment[1].name")).sendKeys("HMRC-IOSS-ORG")
-    driver
-      .findElement(By.id("input-1-0-name"))
-      .sendKeys("IOSSNumber")
-    driver
-      .findElement(By.id("input-1-0-value"))
-      .sendKeys(iossNumber)
-    driver.findElement(By.cssSelector("Input[value='Submit']")).click()
+
+    if (iossNumber != "none") {
+      driver.findElement(By.id("enrolment[1].name")).sendKeys("HMRC-IOSS-ORG")
+      driver
+        .findElement(By.id("input-1-0-name"))
+        .sendKeys("IOSSNumber")
+      driver
+        .findElement(By.id("input-1-0-value"))
+        .sendKeys(iossNumber)
+    }
+      driver.findElement(By.cssSelector("Input[value='Submit']")).click()
   }
 
 }

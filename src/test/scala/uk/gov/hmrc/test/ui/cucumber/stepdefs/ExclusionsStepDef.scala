@@ -122,4 +122,10 @@ class ExclusionsStepDef extends BaseStepDef {
     CommonPage.goToExclusionsJourney()
   }
 
+  Given(
+    "^the user signs into (exclusions|returns) as an Organisation with VRN (.*) and no IOSS Number$"
+  ) { (service: String, vrn: String) =>
+    AuthPage.loginUsingAuthorityWizard(vrn, "none", service)
+  }
+
 }

@@ -41,5 +41,9 @@ Feature: Kickouts Feature
     And the user is on the already-left-scheme-error page
     And the user clicks on the sign out link
 
+  Scenario: A trader is unable to access the self exclude journey if they are not registered for IOSS
+    Given the user accesses the IOSS Exclusions service
+    When the user signs into exclusions as an Organisation with VRN 100000001 and no IOSS Number
+    Then the user is on the cannot-use-not-registered page
 
 
