@@ -36,4 +36,10 @@ Feature: Exclusions Feature
     Then the user is on the successful page
     And the user clicks on the sign out link
 
+  Scenario: An assistant user can access the exclusions service
+    Given the user accesses the IOSS Returns service
+    When the assistant signs into returns as an Organisation with VRN 100000001 and IOSS Number IM9001234567
+    And the user clicks on the Leave this service link
+    Then the user is on the move-country page
+
 

@@ -33,9 +33,9 @@ class ExclusionsStepDef extends BaseStepDef {
   }
 
   Given(
-    "^the user signs into (exclusions|returns) as an Organisation with VRN (.*) and IOSS Number (.*)$"
-  ) { (service: String, vrn: String, iossNumber: String) =>
-    AuthPage.loginUsingAuthorityWizard(vrn, iossNumber, service)
+    "^the (user|assistant) signs into (exclusions|returns) as an Organisation with VRN (.*) and IOSS Number (.*)$"
+  ) { (user: String, service: String, vrn: String, iossNumber: String) =>
+    AuthPage.loginUsingAuthorityWizard(user, vrn, iossNumber, service)
   }
 
   When("""^the user answers (yes|no) on the (.*) page$""") { (data: String, url: String) =>
@@ -125,7 +125,7 @@ class ExclusionsStepDef extends BaseStepDef {
   Given(
     "^the user signs into (exclusions|returns) as an Organisation with VRN (.*) and no IOSS Number$"
   ) { (service: String, vrn: String) =>
-    AuthPage.loginUsingAuthorityWizard(vrn, "none", service)
+    AuthPage.loginUsingAuthorityWizard("user", vrn, "none", service)
   }
 
 }
