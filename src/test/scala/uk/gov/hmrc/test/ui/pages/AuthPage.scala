@@ -58,7 +58,7 @@ object AuthPage extends BasePage {
         .findElement(By.id("input-1-0-value"))
         .sendKeys(iossNumber)
     }
-      driver.findElement(By.cssSelector("Input[value='Submit']")).click()
+    driver.findElement(By.cssSelector("Input[value='Submit']")).click()
   }
 
 }

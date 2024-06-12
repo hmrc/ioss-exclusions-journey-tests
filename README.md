@@ -29,10 +29,6 @@ Then execute the `run_tests.sh` script:
 The `run_tests.sh` script defaults to using `chrome` in the `local` environment.  For a complete list of supported param values, see:
 - `src/test/resources/application.conf` for **environment**
 
-## Selenium Grid
-
-You will need to run Selenium Grid via the instructions here - https://github.com/hmrc/docker-selenium-grid
-
 ## ZAP and Accessibility tests
 
 ZAP and Accessibility tests are bundled together with the journey tests on Jenkins.
