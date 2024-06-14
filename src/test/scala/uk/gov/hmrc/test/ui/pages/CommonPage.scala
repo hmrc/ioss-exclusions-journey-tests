@@ -28,6 +28,9 @@ object CommonPage extends BasePage {
   def goToExclusionsJourney(): Unit =
     driver.navigate().to(exclusionsUrl)
 
+  def goToPage(page: String): Unit =
+    driver.navigate().to(s"$exclusionsUrl/$page")
+
   def goToReturnsDashboard(): Unit =
     driver.navigate().to(returnsUrl)
 
@@ -93,5 +96,10 @@ object CommonPage extends BasePage {
 
   def goToCancelExclusion(): Unit =
     driver.navigate().to(s"$exclusionsUrl/cancel-leave-scheme")
+
+  def clickBackButton(): Unit =
+    driver
+      .navigate()
+      .back()
 
 }

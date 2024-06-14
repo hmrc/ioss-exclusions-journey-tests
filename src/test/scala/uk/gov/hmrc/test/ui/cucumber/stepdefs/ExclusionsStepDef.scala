@@ -18,6 +18,7 @@ package uk.gov.hmrc.test.ui.cucumber.stepdefs
 
 import org.junit.Assert
 import org.openqa.selenium.By
+import uk.gov.hmrc.test.ui.pages.CommonPage.clickBackButton
 import uk.gov.hmrc.test.ui.pages.{AuthPage, CommonPage}
 
 import java.time.LocalDate
@@ -122,10 +123,18 @@ class ExclusionsStepDef extends BaseStepDef {
     CommonPage.goToExclusionsJourney()
   }
 
+  When("""^the user manually navigates to the (.*) page$""") { (page: String) =>
+    CommonPage.goToPage(page)
+  }
+
   Given(
     "^the user signs into (exclusions|returns) as an Organisation with VRN (.*) and no IOSS Number$"
   ) { (service: String, vrn: String) =>
     AuthPage.loginUsingAuthorityWizard("user", vrn, "none", service)
+  }
+
+  Then("""^the user clicks back on the browser$""") { () =>
+    clickBackButton()
   }
 
 }
