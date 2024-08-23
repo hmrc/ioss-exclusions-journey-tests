@@ -22,6 +22,8 @@ Feature: Exclusions Feature
     Then the user answers no on the move-country page
     And the user answers yes on the stop-selling-goods page
     And the user enters today for stopped-selling-goods-date
+    Then the user is on the check-your-answers page
+    Then the user presses the continue button
     Then the user is on the successful page
     And the user clicks on the sign out link
 
@@ -33,6 +35,8 @@ Feature: Exclusions Feature
     And the user answers no on the stop-selling-goods page
     And the user answers yes on the leave-scheme page
     And the user enters today for stopped-using-service-date
+    Then the user is on the check-your-answers page
+    Then the user presses the continue button
     Then the user is on the successful page
     And the user clicks on the sign out link
 
