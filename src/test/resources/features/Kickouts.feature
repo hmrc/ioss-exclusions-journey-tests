@@ -5,8 +5,8 @@ Feature: Kickouts Feature
   Scenario: Failure when submitting moving to a different country exclusions journey
     Given the user accesses the IOSS Exclusions service
     When the user signs into exclusions as an Organisation with VRN 600000022 and IOSS Number IM9002222222
-    Then the user answers yes on the move-country page
-    And the user selects Hungary on the eu-country page
+    Then the user answers yes on the moving-to-an-eu-country page
+    And the user selects Hungary on the which-eu-country page
     And the user enters today for move-date
     And the user adds HU12345678 on the eu-vat-number page
     Then the user is on the check-your-answers page
@@ -17,7 +17,7 @@ Feature: Kickouts Feature
   Scenario: Failure when submitting stopped selling eligible goods to EU/NI exclusions journey
     Given the user accesses the IOSS Exclusions service
     When the user signs into exclusions as an Organisation with VRN 600000022 and IOSS Number IM9002222222
-    Then the user answers no on the move-country page
+    Then the user answers no on the moving-to-an-eu-country page
     And the user answers yes on the stop-selling-goods page
     And the user enters today for stopped-selling-goods-date
     Then the user is on the check-your-answers page
@@ -28,7 +28,7 @@ Feature: Kickouts Feature
   Scenario: Failure when submitting voluntary exclusions journey
     Given the user accesses the IOSS Exclusions service
     When the user signs into exclusions as an Organisation with VRN 600000022 and IOSS Number IM9002222222
-    Then the user answers no on the move-country page
+    Then the user answers no on the moving-to-an-eu-country page
     And the user answers no on the stop-selling-goods page
     And the user answers yes on the leave-scheme page
     And the user enters today for stopped-using-service-date
