@@ -51,13 +51,13 @@ Feature: Reversals Feature
     Given the user accesses the IOSS Returns service
     When the user signs into returns as an Organisation with VRN 100000001 and IOSS Number IM9009999992
     And the user clicks on the Leave this service link
-    Then the user answers no on the move-country page
+    Then the user answers no on the moving-to-an-eu-country page
     And the user answers no on the stop-selling-goods page
     And the user answers yes on the leave-scheme page
     And the user enters today for stopped-using-service-date
     Then the user is on the check-your-answers page
     Then the user presses the continue button
-    Then the user is on the successful page
+    Then the user is on the leave-request-received page
     And the user clicks on the sign out link
 
   Scenario: Failure from ETMP when reversing a self exclusion

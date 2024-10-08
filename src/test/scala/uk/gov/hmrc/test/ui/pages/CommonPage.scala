@@ -35,7 +35,7 @@ object CommonPage extends BasePage {
     driver.navigate().to(returnsUrl)
 
   def checkJourneyUrl(): Unit =
-    driver.getCurrentUrl should startWith(s"$exclusionsUrl/move-country")
+    driver.getCurrentUrl should startWith(s"$exclusionsUrl/moving-to-an-eu-country")
 
   def checkUrl(url: String): Unit =
     driver.getCurrentUrl should startWith(s"${TestConfiguration.url("ioss-exclusions-frontend")}/$url")
