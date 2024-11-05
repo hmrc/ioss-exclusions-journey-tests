@@ -56,7 +56,7 @@ Feature: Reversals Feature
     And the user answers yes on the leave-scheme page
     And the user enters today for stopped-using-service-date
     Then the user is on the check-your-answers page
-    Then the user presses the continue button
+    Then the user presses the submit button
     Then the user is on the leave-request-received page
     And the user clicks on the sign out link
 

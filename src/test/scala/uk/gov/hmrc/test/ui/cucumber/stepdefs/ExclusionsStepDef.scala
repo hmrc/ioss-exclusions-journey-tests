@@ -89,8 +89,8 @@ class ExclusionsStepDef extends BaseStepDef {
     CommonPage.selectLink(s"$link\\?waypoints\\=check-your-answers")
   }
 
-  Then("""^the user presses the continue button$""") { () =>
-    CommonPage.clickContinue()
+  Then("""^the user presses the submit button$""") { () =>
+    CommonPage.clickSubmit()
   }
 
   Then("""^the user clicks on the sign out link$""") { () =>
