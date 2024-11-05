@@ -52,6 +52,9 @@ object CommonPage extends BasePage {
   def clickContinue(): Unit =
     driver.findElement(By.id("continue")).click()
 
+  def clickSubmit(): Unit =
+    driver.findElement(By.id("submit")).click()
+
   def selectValueAutocomplete(data: String): Unit = {
     val inputId = "value"
     driver.findElement(By.id(inputId)).sendKeys(data)

@@ -13,7 +13,7 @@ Feature: Changing Answers Feature
     When the user selects the change link for move-date
     And the user amends to tomorrow for move-date
     Then the user is on the check-your-answers page
-    Then the user presses the continue button
+    Then the user presses the submit button
     And the user is on the leave-request-received page
     And the user clicks on the sign out link
 
@@ -28,7 +28,7 @@ Feature: Changing Answers Feature
     When the user selects the change link for eu-vat-number
     And the user amends to SK1234123490 on the eu-vat-number page
     Then the user is on the check-your-answers page
-    Then the user presses the continue button
+    Then the user presses the submit button
     And the user is on the leave-request-received page
     And the user clicks on the sign out link
 
@@ -44,7 +44,7 @@ Feature: Changing Answers Feature
     Then the user reselects Finland on the which-eu-country page
     And the user adds FI12345678 on the eu-vat-number page
     Then the user is on the check-your-answers page
-    Then the user presses the continue button
+    Then the user presses the submit button
     And the user is on the leave-request-received page
     And the user clicks on the sign out link
 
@@ -58,7 +58,7 @@ Feature: Changing Answers Feature
     When the user selects the change link for stopped-selling-goods-date
     And the user amends to tomorrow for stopped-selling-goods-date
     Then the user is on the check-your-answers page
-    Then the user presses the continue button
+    Then the user presses the submit button
     And the user is on the leave-request-received page
     And the user clicks on the sign out link
 
@@ -73,7 +73,7 @@ Feature: Changing Answers Feature
     When the user selects the change link for stopped-using-service-date
     And the user amends to tomorrow for stopped-using-service-date
     Then the user is on the check-your-answers page
-    Then the user presses the continue button
+    Then the user presses the submit button
     And the user is on the leave-request-received page
     And the user clicks on the sign out link
 
@@ -90,7 +90,7 @@ Feature: Changing Answers Feature
     And the user answers yes on the stop-selling-goods page
     And the user enters today for stopped-selling-goods-date
     Then the user is on the check-your-answers page
-    Then the user presses the continue button
+    Then the user presses the submit button
     And the user is on the leave-request-received page
     And the user clicks on the sign out link
 
@@ -108,7 +108,7 @@ Feature: Changing Answers Feature
     And the user answers yes on the leave-scheme page
     And the user enters today for stopped-using-service-date
     Then the user is on the check-your-answers page
-    Then the user presses the continue button
+    Then the user presses the submit button
     And the user is on the leave-request-received page
     And the user clicks on the sign out link
 
@@ -125,7 +125,7 @@ Feature: Changing Answers Feature
     And the user enters today for move-date
     And the user adds EL123456789 on the eu-vat-number page
     Then the user is on the check-your-answers page
-    Then the user presses the continue button
+    Then the user presses the submit button
     And the user is on the leave-request-received page
     And the user clicks on the sign out link
 
@@ -141,7 +141,7 @@ Feature: Changing Answers Feature
     And the user answers yes on the leave-scheme page
     And the user enters today for stopped-using-service-date
     Then the user is on the check-your-answers page
-    Then the user presses the continue button
+    Then the user presses the submit button
     And the user is on the leave-request-received page
     And the user clicks on the sign out link
 
@@ -159,7 +159,7 @@ Feature: Changing Answers Feature
     And the user enters today for move-date
     And the user adds SI12345678 on the eu-vat-number page
     Then the user is on the check-your-answers page
-    Then the user presses the continue button
+    Then the user presses the submit button
     And the user is on the leave-request-received page
     And the user clicks on the sign out link
 
@@ -175,7 +175,7 @@ Feature: Changing Answers Feature
     And the user answers yes on the stop-selling-goods page
     And the user enters today for stopped-selling-goods-date
     Then the user is on the check-your-answers page
-    Then the user presses the continue button
+    Then the user presses the submit button
     And the user is on the leave-request-received page
     And the user clicks on the sign out link
 
