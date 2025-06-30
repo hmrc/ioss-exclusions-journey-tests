@@ -52,24 +52,27 @@ class ExclusionsStepDef extends BaseStepDef {
     CommonPage.selectValueAutocomplete(data)
   }
 
-  When("^the user (enters|amends to) (today|tomorrow) for (.*)$") { (mode: String, dateEntered: String, url: String) =>
-    val date = {
-      if (dateEntered == "today") {
-        LocalDate.now()
-      } else {
-        LocalDate.now().plusDays(1)
+  When("^the user (enters|amends to) (today|tomorrow|mid-month) for (.*)$") {
+    (mode: String, dateEntered: String, url: String) =>
+      val date = {
+        if (dateEntered == "today") {
+          LocalDate.now()
+        } else if (dateEntered == "mid-month") {
+          LocalDate.now().withDayOfMonth(15)
+        } else {
+          LocalDate.now().plusDays(1)
+        }
       }
-    }
-    CommonPage.checkUrl(url)
-    if (mode == "amends to") {
-      CommonPage.clearDate()
-    }
-    CommonPage.enterDate(
-      date.getDayOfMonth.toString,
-      date.getMonthValue.toString,
-      date.getYear.toString
-    )
-    CommonPage.clickContinue()
+      CommonPage.checkUrl(url)
+      if (mode == "amends to") {
+        CommonPage.clearDate()
+      }
+      CommonPage.enterDate(
+        date.getDayOfMonth.toString,
+        date.getMonthValue.toString,
+        date.getYear.toString
+      )
+      CommonPage.clickContinue()
   }
 
   When("""^the user (adds|amends to) (.*) on the (.*) page$""") { (mode: String, data: String, url: String) =>
