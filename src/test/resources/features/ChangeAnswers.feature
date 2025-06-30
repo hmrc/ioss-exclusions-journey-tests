@@ -56,7 +56,7 @@ Feature: Changing Answers Feature
     And the user enters today for stopped-selling-goods-date
     Then the user is on the check-your-answers page
     When the user selects the change link for stopped-selling-goods-date
-    And the user amends to tomorrow for stopped-selling-goods-date
+    And the user amends to mid-month for stopped-selling-goods-date
     Then the user is on the check-your-answers page
     Then the user presses the submit button
     And the user is on the leave-request-received page
@@ -71,7 +71,7 @@ Feature: Changing Answers Feature
     And the user enters today for stopped-using-service-date
     Then the user is on the check-your-answers page
     When the user selects the change link for stopped-using-service-date
-    And the user amends to tomorrow for stopped-using-service-date
+    And the user amends to mid-month for stopped-using-service-date
     Then the user is on the check-your-answers page
     Then the user presses the submit button
     And the user is on the leave-request-received page
