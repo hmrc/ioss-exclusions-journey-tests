@@ -1,10 +1,11 @@
-@Exclusions @Accessibility @ZAP
+@Exclusions
 
 Feature: Exclusions Feature
 
   Scenario: Moving to a different country exclusions journey
     Given the user accesses the IOSS Returns service
     When the user signs into returns as an Organisation with VRN 100000001 and IOSS Number IM9001234567
+    And the user is redirected to their dashboard
     And the user clicks on the Leave this service link
     Then the user answers yes on the moving-to-an-eu-country page
     And the user selects Hungary on the which-eu-country page
@@ -18,6 +19,7 @@ Feature: Exclusions Feature
   Scenario: Stopped selling eligible goods to EU/NI exclusions journey
     Given the user accesses the IOSS Returns service
     When the user signs into returns as an Organisation with VRN 100000001 and IOSS Number IM9001234567
+    And the user is redirected to their dashboard
     And the user clicks on the Leave this service link
     Then the user answers no on the moving-to-an-eu-country page
     And the user answers yes on the stop-selling-goods page
@@ -30,6 +32,7 @@ Feature: Exclusions Feature
   Scenario: Voluntary exclusions journey
     Given the user accesses the IOSS Returns service
     When the user signs into returns as an Organisation with VRN 100000001 and IOSS Number IM9001234567
+    And the user is redirected to their dashboard
     And the user clicks on the Leave this service link
     Then the user answers no on the moving-to-an-eu-country page
     And the user answers no on the stop-selling-goods page
@@ -43,6 +46,7 @@ Feature: Exclusions Feature
   Scenario: An assistant user can access the exclusions service
     Given the user accesses the IOSS Returns service
     When the assistant signs into returns as an Organisation with VRN 100000001 and IOSS Number IM9001234567
+    And the user is redirected to their dashboard
     And the user clicks on the Leave this service link
     Then the user is on the moving-to-an-eu-country page
 

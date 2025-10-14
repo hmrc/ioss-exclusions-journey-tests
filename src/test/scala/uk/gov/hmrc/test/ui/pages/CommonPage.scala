@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2025 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,8 +37,17 @@ object CommonPage extends BasePage {
   def checkJourneyUrl(): Unit =
     driver.getCurrentUrl should startWith(s"$exclusionsUrl/moving-to-an-eu-country")
 
-  def checkUrl(url: String): Unit =
-    driver.getCurrentUrl should startWith(s"${TestConfiguration.url("ioss-exclusions-frontend")}/$url")
+  def checkReturnsUrl(url: String): Unit = {
+    val dashboardUrl = s"$returnsUrl/$url"
+    fluentWait.until(ExpectedConditions.urlContains(dashboardUrl))
+    driver.getCurrentUrl should startWith(dashboardUrl)
+  }
+
+  def checkUrl(url: String): Unit = {
+    val urlToCheck = s"${TestConfiguration.url("ioss-exclusions-frontend")}/$url"
+    fluentWait.until(ExpectedConditions.urlContains(urlToCheck))
+    driver.getCurrentUrl should startWith(urlToCheck)
+  }
 
   def selectAnswer(data: String): Unit = {
     data match {
