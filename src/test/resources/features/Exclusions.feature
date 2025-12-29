@@ -3,7 +3,7 @@
 Feature: Exclusions Feature
 
   Scenario: Moving to a different country exclusions journey
-    Given the user accesses the IOSS Returns service
+    Given the user accesses the IIOSS Returns service
     When the user signs into returns as an Organisation with VRN 100000001 and IOSS Number IM9001234567
     And the user is redirected to their dashboard
     And the user clicks on the Leave this service link
@@ -17,7 +17,7 @@ Feature: Exclusions Feature
     And the user clicks on the sign out link
 
   Scenario: Stopped selling eligible goods to EU/NI exclusions journey
-    Given the user accesses the IOSS Returns service
+    Given the user accesses the IIOSS Returns service
     When the user signs into returns as an Organisation with VRN 100000001 and IOSS Number IM9001234567
     And the user is redirected to their dashboard
     And the user clicks on the Leave this service link
@@ -30,7 +30,7 @@ Feature: Exclusions Feature
     And the user clicks on the sign out link
 
   Scenario: Voluntary exclusions journey
-    Given the user accesses the IOSS Returns service
+    Given the user accesses the IIOSS Returns service
     When the user signs into returns as an Organisation with VRN 100000001 and IOSS Number IM9001234567
     And the user is redirected to their dashboard
     And the user clicks on the Leave this service link
@@ -44,7 +44,7 @@ Feature: Exclusions Feature
     And the user clicks on the sign out link
 
   Scenario: An assistant user can access the exclusions service
-    Given the user accesses the IOSS Returns service
+    Given the user accesses the IIOSS Returns service
     When the assistant signs into returns as an Organisation with VRN 100000001 and IOSS Number IM9001234567
     And the user is redirected to their dashboard
     And the user clicks on the Leave this service link
