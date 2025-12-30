@@ -1,39 +1,33 @@
 # ioss-exclusions-journey-tests
-UI test suite for the `ioss-exclusions-frontend` using WebDriver and `<scalatest/cucumber>`.
 
-## Running the tests
+`ioss-exclusions-frontend` UI journey tests.
 
-Prior to executing the tests ensure you have:
-- Docker - to run mongo and browser (Chrome, Firefox or Edge) inside a container - see guide here - https://docs.tax.service.gov.uk/mdtp-handbook/documentation/developer-set-up/install-docker.html
-- Installed/configured [service manager](https://github.com/hmrc/service-manager).
-- Selenium Grid - see section further down
+## Pre-requisites
 
-Run the following commands to start mongo and services locally:
+### Services
 
-    Run mongo at 4.4 with a replica set:
-    docker run --restart unless-stopped -d -p 27017-27019:27017-27019 --name mongo4 mongo:4.4 --replSet rs0
-    
-    Connect to said replica set:
-    docker exec -it mongo4 mongo
+Start Mongo Docker container as follows:
 
-    When that console is there:
-    rs.initiate()
+```bash
+docker run --rm -d -p 27017:27017 --name mongo percona/percona-server-mongodb:5.0
+```
 
-    Start services via service manager:
-    sm2 --start IMPORT_ONE_STOP_SHOP_ALL 
+Start `<SERVICE_MANAGER_PROFILE>` services as follows:
 
-Then execute the `run_tests.sh` script:
+```bash
+sm2 --start IMPORT_ONE_STOP_SHOP-ALL
+```
 
-    ./run_tests.sh <browser-driver> <environment> 
+## Tests
 
-The `run_tests.sh` script defaults to using `chrome` in the `local` environment.  For a complete list of supported param values, see:
-- `src/test/resources/application.conf` for **environment**
+Run tests as follows:
 
-## ZAP and Accessibility tests
+* Argument `<browser>` must be `chrome`, `edge`, or `firefox`.
+* Argument `<environment>` must be `local`, `dev`, `qa` or `staging`.
 
-ZAP and Accessibility tests are bundled together with the journey tests on Jenkins.
-
-The reports for these can be accessed via the journey test build here - https://build.tax.service.gov.uk/job/One%20Stop%20Shop/job/ioss-exclusions-journey-tests/
+```bash
+sbt clean -Dbrowser="<browser>" -Denvironment="<environment>" "testOnly uk.gov.hmrc.ui.specs.*" testReport
+```
 
 ## Scalafmt
 
