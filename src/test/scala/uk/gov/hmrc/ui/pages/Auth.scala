@@ -26,6 +26,8 @@ object Auth extends BasePage {
   private val authUrl: String       = TestEnvironment.url("auth-login-stub") + "/auth-login-stub/gg-sign-in"
   private val exclusionsUrl: String =
     TestEnvironment.url("ioss-exclusions-frontend") + "/pay-vat-on-goods-sold-to-eu/leave-import-one-stop-shop"
+  private val reversalUrl: String   =
+    exclusionsUrl + "/cancel-leave-scheme"
   private val returnsUrl: String    =
     TestEnvironment.url(
       "ioss-returns-frontend"
@@ -33,8 +35,10 @@ object Auth extends BasePage {
 
   def loginUsingAuthorityWizard(user: String, journey: String, vrn: String): Unit = {
 
-    if (journey == "exclusions" || journey == "exclusionFailure") {
+    if (journey == "exclusions" || journey == "exclusionFailure" || journey == "reversedExclusion") {
       sendKeys(By.name("redirectionUrl"), exclusionsUrl)
+    } else if (journey == "reversalFailure") {
+      sendKeys(By.name("redirectionUrl"), reversalUrl)
     } else {
       sendKeys(By.name("redirectionUrl"), returnsUrl)
     }
@@ -56,12 +60,15 @@ object Auth extends BasePage {
 
       val iossNumber =
         journey match {
-          case "alreadyExcluded" || "reversalMoveCountry => "IM9009999995"
-          case "exclusionFailure" => "IM9002222222"
-          case "reversalNoLongerSelling" => "IM9009999997"
-          case "reversalVoluntary" => "IM9009999996"
-          case "exclusionPast" => "IM9009999994"
-          case _ => "IM9001234567"
+          case "alreadyExcluded" | "reversalMoveCountry" => "IM9009999995"
+          case "exclusionFailure"                        => "IM9002222222"
+          case "reversalNoLongerSelling"                 => "IM9009999997"
+          case "reversalVoluntary"                       => "IM9009999996"
+          case "exclusionPast"                           => "IM9009999994"
+          case "nonSelfExclusion"                        => "IM9009999993"
+          case "reversedExclusion"                       => "IM9009999992"
+          case "reversalFailure"                         => "IM9009999966"
+          case _                                         => "IM9001234567"
         }
 
       sendKeys(By.id("input-1-0-value"), iossNumber)

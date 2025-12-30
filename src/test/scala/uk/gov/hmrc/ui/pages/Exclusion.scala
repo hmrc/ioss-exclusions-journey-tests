@@ -129,4 +129,11 @@ object Exclusion extends BasePage {
     Driver.instance
       .navigate()
       .back()
+
+  def checkPageInReturnsJourney(page: String): Unit = {
+    val urlToCheck = s"$returnsUrl/$page"
+    fluentWait.until(ExpectedConditions.urlContains(urlToCheck))
+    getCurrentUrl should startWith(urlToCheck)
+  }
+
 }

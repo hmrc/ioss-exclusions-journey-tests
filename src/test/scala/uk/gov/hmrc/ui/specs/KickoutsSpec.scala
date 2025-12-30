@@ -133,7 +133,7 @@ class KickoutsSpec extends BaseSpec {
       auth.loginUsingAuthorityWizard("user", "notRegistered", "100000001")
 
       Then("the trader is on the cannot-use-not-registered page")
-      exclusion.checkJourneyUrl("cannot-use-not-registered")
+      exclusion.checkPageInReturnsJourney("cannot-use-not-registered")
 
     }
   }

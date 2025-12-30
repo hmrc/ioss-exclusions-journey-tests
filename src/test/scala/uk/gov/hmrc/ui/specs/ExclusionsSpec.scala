@@ -113,7 +113,7 @@ class ExclusionsSpec extends BaseSpec {
       exclusion.checkJourneyUrl("leave-request-received")
 
     }
-    
+
     Scenario("Trader who is an assistant user can access the exclusions service") {
 
       Given("a assistant trader accesses the IOSS Exclusions Service")
